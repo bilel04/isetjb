@@ -28,12 +28,13 @@ app.use(cors({
 
 
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(__dirname + '/etudiant/dist/'));
+app.use(bodyParser.json());
+app.use(express.static(__dirname + '/admin/dist/'));
 app.use('/authentification', authentification);
 
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname + '/etudiant/dist/index.html'));
+	res.sendFile(path.join(__dirname + '/admin/dist/index.html'));
 });
 
 app.listen(8080, () => {

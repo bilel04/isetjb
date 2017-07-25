@@ -110,7 +110,7 @@ module.exports = (router) => {
         } else {
             if (!req.body.password) {
                 res.json({ success: false, message: 'Il faut remplir le champ de mot de passe' });
-            } else {
+            } else { 
                 User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
                     // Vérifier s'il y a des erreurs
                     if (err) {
@@ -118,7 +118,7 @@ module.exports = (router) => {
                     } else {
                         //Vérifier si le pseudo existe
                         if (!user) {
-                            res.json({ success: false, message: 'Username not found.' }); // Retourner erreur
+                            res.json({ success: false, message: 'Ce pseudo n\'existe pas ' }); // Retourner erreur
                         } else {
                             const validPassword = user.comparePassword(req.body.password); // Comparaison des mot de passes
 
