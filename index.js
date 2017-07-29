@@ -5,6 +5,8 @@ const path = require ('path');
 const config= require('./config/database');
 const router = express.Router();
 const authentification = require('./routes/authentification')(router);
+const blogs = require('./routes/blogs')(router);
+
 
 const bodyParser = require('body-parser');
 
@@ -31,6 +33,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/admin/dist/'));
 app.use('/authentification', authentification);
+app.use('/blogs', blogs);
 
 
 app.get('*', (req, res) => {

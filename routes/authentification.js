@@ -120,8 +120,7 @@ module.exports = (router) => {
                         if (!user) {
                             res.json({ success: false, message: 'Ce pseudo n\'existe pas ' }); // Retourner erreur
                         } else {
-                            const validPassword = user.comparePassword(req.body.password); // Comparaison des mot de passes
-
+                           const validPassword = user.comparePassword(req.body.password); // Comparaison des mot de passes
                             if (!validPassword) {
                                 res.json({ success: false, message: 'Password invalid' }); // Retourner erreur
                             } else {
@@ -138,7 +137,7 @@ module.exports = (router) => {
 
 
     /* MIDDLEWARE -Pour saisir le jeton de l'utilisateur depuis 'header' */
-    router.use((req, res, next) => {
+    router.use(function (req, res, next) {
         const token = req.headers['authorization']; // Créer le jeton trouvé dans 'headers'
         // Vérifier si le jeton existe dans le 'headers'
         if (!token) {
@@ -160,7 +159,7 @@ module.exports = (router) => {
     //Profile
     router.get('/profile', (req, res) => {
         // Recherche de l'utilisateur 
-        User.findOne({ _id: req.decoded.userId }).select('username email').exec((err, user) => {
+        User.findOne({ _id: req.decoded.userId }).select('username email').exec(function(err, user){
             // Vérifier s'il y'a des erreurs
             if (err) {
                 res.json({ success: false, message: err }); // Retourner erreur
