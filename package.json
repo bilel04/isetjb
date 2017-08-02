@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bilel04/app.git"
+    "url": "git+https://github.com/bilel04/isetjb.git"
   },
   "author": "Bilel Chahed",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bilel04/app/issues"
+    "url": "https://github.com/bilel04/isetjb/issues"
   },
-  "homepage": "https://github.com/bilel04/app#readme",
+  "homepage": "https://github.com/bilel04/isetjb#readme",
   "dependencies": {
     "angular2-flash-messages": "^1.0.8",
     "angular2-jwt": "^0.2.3",
