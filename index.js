@@ -11,7 +11,7 @@ const blogs = require('./routes/blogs')(router);
 const bodyParser = require('body-parser');
 
 const cors = require('cors');
-
+const port = process.env.port || 8080;
 
 mongoose.Promise= global.Promise;
 mongoose.connect(config.uri, (err) => {
@@ -31,15 +31,15 @@ app.use(cors({
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/admin/dist/'));
+app.use(express.static(__dirname + '/public'));
 app.use('/authentification', authentification);
 app.use('/blogs', blogs);
 
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname + '/admin/dist/index.html'));
+	res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
-app.listen(8080, () => {
-	console.log('Okey');
+app.listen(port, () => {
+	console.log('Port: '+port);
 });
